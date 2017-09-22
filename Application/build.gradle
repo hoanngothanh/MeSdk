@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.cdkj.mesdk"
-        minSdkVersion 22
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -18,10 +18,15 @@ android {
     }
 }
 
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':MeLib')
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-annotations:26.+'
-    compile 'com.google.zxing:core:3.3.0'
+    /*compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-annotations:26.+'*/
+    //compile 'com.google.zxing:core:3.3.0'
+    //compile 'com.github.scofield-hello:MeSdk:v1.0.0-alpha1'
 }
