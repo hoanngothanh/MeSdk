@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MeLib</string>
-    <string name="connecting">设备连接中...</string>
+    <string name="connecting">设备连接中&#8230;</string>
     <string name="connected">设备已连接.</string>
     <string name="disconnected">设备已断开.</string>
+    <string name="title_activity_printer">小票打印</string>
+    <string name="printing">正在打印小票&#8230;</string>
 </resources>
