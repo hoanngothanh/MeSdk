@@ -7,10 +7,13 @@ import android.util.Log;
 import android.view.View;
 
 import com.cdkj.melib.activities.BarcodeActivity;
-import com.cdkj.melib.activities.PrinterActivity;
+import com.cdkj.melib.model.QrCodeStats;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 	private static final String TAG = "MainActivity";
+	private static final int QR_SCANNER = 1;
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -19,13 +22,15 @@ public class MainActivity extends Activity {
 	}
 
 	public void onButtonClick (View view) {
-		//startActivity (new Intent (this, BarcodeActivity.class));
+		Intent barcodeScannerIntent = new Intent (this, BarcodeActivity.class);
+		startActivityForResult (barcodeScannerIntent, QR_SCANNER);
+
 		//Intent intent = new Intent("android.intent.action.NEWLAND.PAYMENT");
 		/*Intent intent = new Intent();
 		intent.setClassName("com.boc.zjls", "com.boc.spos.bocpay.ui.activity.MainActivity");
         intent.putExtra("transType", 444);
         startActivityForResult(intent, 444);*/
-
+		/*
 		StringBuffer scriptBuffer = new StringBuffer ();
 		scriptBuffer.append ("!hz l\n !asc l\n");// 设置标题字体为大号
 		scriptBuffer.append ("!yspace 20\n !gray 7\n");// 设置行间距
@@ -66,16 +71,24 @@ public class MainActivity extends Activity {
 		scriptBuffer.append ("*line" + "\n");// 打印虚线
 		Intent intent = new Intent (this, PrinterActivity.class);
 		intent.putExtra ("script", scriptBuffer.toString ());
-		startActivity (intent);
+		startActivity (intent);*/
 	}
 
 	@Override
 	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
 		super.onActivityResult (requestCode, resultCode, data);
-		int transType1 = data.getIntExtra ("transType", 444);
-		String responseCode1 = data.getStringExtra ("responseCode");
-		String message1 = data.getStringExtra ("message");
-		String cardPan1 = data.getStringExtra ("cardPan");
-		Log.d (TAG, "读取卡号返回——transType:" + transType1 + ", responseCode:" + responseCode1 + ", message:" + message1 + ", cardPan:" + cardPan1);
+		switch (requestCode) {
+			case QR_SCANNER:
+				if (resultCode == RESULT_OK) {
+					ArrayList<QrCodeStats> qrCodeStatses = data.getParcelableArrayListExtra (BarcodeActivity.QR_CODES);
+					for (QrCodeStats qrCodeStats : qrCodeStatses) {
+						Log.d (TAG, "扫描二维码返回:" + qrCodeStats.toString ());
+					}
+				} else {
+					Log.d (TAG, "取消扫描二维码");
+				}
+				break;
+		}
+
 	}
 }

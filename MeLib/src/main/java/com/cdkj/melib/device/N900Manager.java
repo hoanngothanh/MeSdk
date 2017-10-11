@@ -33,11 +33,11 @@ import com.newland.mtypex.nseries.NSConnV100ConnParams;
 
 public class N900Manager extends AbstractManager {
 	private static final String TAG = "N900Manager";
-	private Context context;
-	private Handler mainHandler;
-	private ConnectionCallback callback;
+	private final Context context;
+	private final Handler mainHandler;
+	private final ConnectionCallback callback;
 	private DeviceManager mDeviceManager;
-	private DeviceEventListener<ConnectionCloseEvent> closeListener = new DeviceEventListener<ConnectionCloseEvent> () {
+	private final DeviceEventListener<ConnectionCloseEvent> closeListener = new DeviceEventListener<ConnectionCloseEvent> () {
 		boolean isClosedHasError = false;
 
 		@Override

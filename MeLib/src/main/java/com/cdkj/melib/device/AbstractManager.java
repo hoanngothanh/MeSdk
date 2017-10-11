@@ -15,10 +15,11 @@ import com.newland.mtype.module.common.storage.Storage;
 import com.newland.mtype.module.common.swiper.K21Swiper;
 
 /**
- * Created by Administrator on 2017/9/21.
+ * Created by Nick on 2017/9/21.
+ * 抽象设备管理器
  */
 
-public abstract class AbstractManager {
+abstract class AbstractManager {
 
 	/**
 	 * 连接设备
