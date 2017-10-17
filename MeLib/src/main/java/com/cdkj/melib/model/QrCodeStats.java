@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by Nick on 2017/10/11.
  * 二维码扫描去重统计对象
  */
-public class QrCodeStats implements Parcelable {
+public class QrCodeStats implements Parcelable{
 
 	public static final Parcelable.Creator<QrCodeStats> CREATOR = new Parcelable.Creator<QrCodeStats> () {
 		@Override

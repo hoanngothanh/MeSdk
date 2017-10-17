@@ -8,6 +8,9 @@ import android.view.View;
 
 import com.cdkj.melib.activities.BarcodeActivity;
 import com.cdkj.melib.model.QrCodeStats;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 
@@ -81,9 +84,7 @@ public class MainActivity extends Activity {
 			case QR_SCANNER:
 				if (resultCode == RESULT_OK) {
 					ArrayList<QrCodeStats> qrCodeStatses = data.getParcelableArrayListExtra (BarcodeActivity.QR_CODES);
-					for (QrCodeStats qrCodeStats : qrCodeStatses) {
-						Log.d (TAG, "扫描二维码返回:" + qrCodeStats.toString ());
-					}
+					Log.d (TAG, "扫描二维码返回: " + new Gson ().toJson (qrCodeStatses));
 				} else {
 					Log.d (TAG, "取消扫描二维码");
 				}
