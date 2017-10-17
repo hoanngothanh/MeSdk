@@ -1,5 +1,5 @@
 # MeSdk
-Newland MeSdk
+新大陆N900 POS机支付SDK
 
 ##
 How to
@@ -20,5 +20,5 @@ Add it in your root build.gradle at the end of repositories:
 ### Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.scofield-hello:MeSdk:v1.0.0-alpha1'
+	        compile 'com.github.scofield-hello:MeSdk:v1.0.0-alpha4'
 	}
